@@ -1,6 +1,64 @@
-# Sample Records
+# Trust Architecture: Genesis Sample Chain
 
-This is the orginial Genesis chain of records, it does contain a key error, and I'm not happy how scopes are formed, but this provides a general thesis of how it would work.
+This chain is more than just a demo. It's proof. The following sample from the current Genesis chain demonstrates that the Trust Architecture ledger:
+
+-   Works
+-   Is cryptographically sound
+-   Upholds transparency, integrity, and authority
+-   Is built for real-world, real-time governance and change
+
+---
+
+## What This Shows — and Why It Matters
+
+### 1. **Genesis Record with Timestamp**
+
+-   **Shows:** The system can create a signed, zero-point record marking the start of time for this chain.
+-   **Why it matters:** Every append-only system needs a fixed beginning. This one is cryptographically anchored and timestamped with a sidereal-based epoch (`js_at`).
+
+### 2. **Policy Enforcement (`policy:set`)**
+
+-   **Shows:** Role-based access and quorum controls are baked in from the start.
+-   **Why it matters:** The ledger enforces its own rules — who can read, who can append, and what gets denied. This is foundational for self-governing scopes.
+
+### 3. **Human-Readable Narrative (`core:note`)**
+
+-   **Shows:** Records can carry mission-critical narrative, intention, and ethics in plaintext.
+-   **Why it matters:** It proves this isn’t just a technical substrate. It’s built for people. For meaning. For social and civic use.
+
+### 4. **Temporal Scar (Fork Rollback Notice)**
+
+-   **Shows:** Mistakes are acknowledged, not erased. A `core:note` transparently describes a key error and chain fork.
+-   **Why it matters:** Trust doesn’t require perfection. It requires accountability. The ability to see where and why a fork happened, with proof, is revolutionary for public systems.
+
+### 5. **Key Grant (`key:grant`)**
+
+-   **Shows:** The root key can extend authority to new keys and roles.
+-   **Why it matters:** Trust can evolve, delegate, and scale. The system supports forward motion without compromising past records.
+
+### 6. **Cryptographic Chain (Hash Linking)**
+
+-   **Shows:** Each record includes a `previous_hash` and produces a `current_hash`.
+-   **Why it matters:** This ensures the immutability of the timeline. Any tampering is immediately detectable.
+
+### 7. **Dual Signatures (Owner + Usher)**
+
+-   **Shows:** Records are not only signed by the keyholder, but also by the usher that received them.
+-   **Why it matters:** It proves _receipt_ and _witness_, not just origin. This is what moves a record from proposal to provable inclusion.
+
+---
+
+## TL;DR: This Is Enough
+
+This isn’t a mockup.
+This isn’t a whitepaper.
+This is a living, verifiable proof of a new kind of infrastructure.
+
+And it works.
+
+> "This is permanence, with purpose. And it is yours."
+
+\-- Veronica Hodo
 
 ---
 
@@ -40,37 +98,36 @@ This is the orginial Genesis chain of records, it does contain a key error, and 
     "previous_hash": "d58sixickyicGRWM/X6mBI3vUNGHcWXQiE/3xVhfWWM=",
     "protocol": "v1",
     "scope": "",
-    "nonce": "wx-ZHVjUF6v97FXFV47rSiwknpp88kiJ49a86HrkNkM",
+    "nonce": "2N0FeULdmPgWSAf1dZVwYfJLMGtlx3IJq79Bjr5sv2I",
     "record_type": "policy:set",
     "data": {
         "schema": "policy.set/1",
-        "write": ["core", "root"],
-        "read": ["any"],
-        "mirror": ["any"],
-        "grant": ["core", "root"],
-        "revoke": ["core", "root"],
-        "allow_records": ["scope:*", "core:*"],
-        "deny_records": ["all"],
-        "quorum": {
-            "write": 1,
-            "grant": 1,
-            "revoke": 2
-        }
+        "keymaster_roles": ["core", "root"],
+        "read_roles": ["any"],
+        "append_roles": ["core", "root"],
+        "quorum_roles": ["core", "root"],
+        "quorum_map": { "all": 1 },
+        "allow_rhex": ["request", "scope:*", "core:*", "key:*"],
+        "deny_rhex": ["all"],
+        "request_logging": "none",
+        "description": "Root Scope Policy Set",
+        "tags": ["core", "root"],
+        "created_by": "Y_dGA-DOtN1kqpZQx1WytR-qmYbcdkWla5cIaK8WDU4"
     },
     "signatures": [
         {
             "fingerprint": "Y_dGA-DOtN1kqpZQx1WytR-qmYbcdkWla5cIaK8WDU4",
             "type": "owner",
-            "signature": "NiyGniUKcIi7GvviLpXEOBQZ2FWEBfDG8jyJj2p0rDxjj0Q8pv5d8YfUSMJsNeB7Qyc_sosToxcuc0p5Nza4DA"
+            "signature": "uGIaxiWSBvk4k9hAX31HOhCoYei3CIx8sOTF5P5KHoOp3i04Q1CFUF0ZMTDvBG9eyICFBlywfXEQ43Geo-vaCg"
         },
         {
-            "fingerprint": "Y_dGA-DOtN1kqpZQx1WytR-qmYbcdkWla5cIaK8WDU4",
-            "signature": "qtRcG9XkoTwpzKwrf-znoQxZfmfrXgFK46PwWQUgBLWLnd7s3jACuyJ0B6OrjSwSBujrBrWX1kXS8viol2PPDA",
+            "fingerprint": "Bn3bHf5FxeTo2DPJtrmT_SXAKL03CFt-eZgSDwLSYTs",
+            "signature": "JNQEM8Zk5Uzbr_xW2G8rdhsIojpAQq378T0C_QFTxVZJUIFcFcHq4GubcflKWInz2C7ejucJPgtFi-q_rM4CAw",
             "type": "usher"
         }
     ],
-    "at": "69",
-    "current_hash": "MrYAzsLdEckSdlf/4D+susy74RO4QjxKqPLLAlOEaAc="
+    "at": "5552239874",
+    "current_hash": "jDIaaZCnDay6vC7AoCqtntSbbYKBXpsSp/6IuYpxM48="
 }
 ```
 
@@ -78,256 +135,91 @@ This is the orginial Genesis chain of records, it does contain a key error, and 
 
 ```json
 {
-    "previous_hash": "MrYAzsLdEckSdlf/4D+susy74RO4QjxKqPLLAlOEaAc=",
+    "previous_hash": "jDIaaZCnDay6vC7AoCqtntSbbYKBXpsSp/6IuYpxM48=",
     "protocol": "v1",
     "scope": "",
-    "nonce": "GtzKft4qILR7Rqyr4ylJAm0xyFK_WuS9a-WTE5QKjbM",
+    "nonce": "NpDeFXEEvjSb6FaSXkyk2iDF4DipJZ-WGh6KJfQLqQk",
+    "record_type": "core:note",
+    "data": {
+        "schema": "core.note/1",
+        "message": "To Everyone:\nThis was built for you.\n\nNot for corporations.\nNot for governments.\nNot for profit, control, or surveillance.\n\nFor you -- the individual.\nThe unheard. The misrepresented. The misused. The unseen.\n\nThis is not just code.\nThis is a line in the sand.\nA declaration that your voice matters.\nThat truth should not be owned.\nThat identity should not be issued.\nThat memory should not be manipulated.\n\nThis is the beginning of a new era --\nOne where power flows from transparency,\nAnd identity belongs to the self,\nNot the system.\n\nThis is your forge.\nYour record.\nYour right to be known, without distortion.\nTo speak, and be provably heard.\n\nWhat you write here cannot be erased.\nWhat you build here cannot be rewritten behind closed doors.\nThis is permanence, with purpose.\nAnd it is yours.\n\nWelcome to the dawn.\nStrike your mark.\nIt begins now.\n\nWith all my eternal love,\nVeronica Hodo"
+    },
+    "signatures": [
+        {
+            "fingerprint": "Y_dGA-DOtN1kqpZQx1WytR-qmYbcdkWla5cIaK8WDU4",
+            "type": "owner",
+            "signature": "cz9uSDgyJB7FzxY_ikWaUII_tSfS9TicoEAx0cCQR2gVGEBdTaossDsEoXqPMCdLQHCMgCldAF4Br82ahKxcDg"
+        },
+        {
+            "fingerprint": "Bn3bHf5FxeTo2DPJtrmT_SXAKL03CFt-eZgSDwLSYTs",
+            "signature": "_W-DFxLRO8zZqyNDr6-yfyuuLNVwr87fGpeOztwWA_qe_B2xEgfqTG6GwMLkzOxkr-skiBbfO80a-R4ikuecDg",
+            "type": "usher"
+        }
+    ],
+    "at": "5569406677",
+    "current_hash": "N8jCjg5HR7FB4Piohk/RjNBJR0Dcx0ozTJsyzfcUetY="
+}
+```
+
+---
+
+```json
+{
+    "previous_hash": "N8jCjg5HR7FB4Piohk/RjNBJR0Dcx0ozTJsyzfcUetY=",
+    "protocol": "v1",
+    "scope": "",
+    "nonce": "4kg89X6fmg54xQuOV5U-H91M3rS540xJJdNYZPaqSLI",
+    "record_type": "core:note",
+    "data": {
+        "schema": "core.note/1",
+        "message": "Well this is definely not how I planned this to go.\n\nAllow me to introduce what is considered a temporal scar if you will. I fucked up and issued a key that was invalid. Then I signed records with that invalid key. And attached them to the ledger.\n\nThe decision was to roll back to the genesis R⬢ and fork. The old data is preserved on https://trust.archi/oops \n\nProof even the Goddess of Time is fallible. ;)\n\nLove, Veronica"
+    },
+    "signatures": [
+        {
+            "fingerprint": "Y_dGA-DOtN1kqpZQx1WytR-qmYbcdkWla5cIaK8WDU4",
+            "type": "owner",
+            "signature": "EusOyGFqqPpFJakok-tJAelw-frjmOoX0PN5yV-yuQ7292Oja8Urp5GBY96lXcPvjrRU9Oe8_X4QgdAZE4OdBw"
+        },
+        {
+            "fingerprint": "Bn3bHf5FxeTo2DPJtrmT_SXAKL03CFt-eZgSDwLSYTs",
+            "signature": "djYBaCHsacLAaDtsN4dKdEUr2zuT3aCn9BQ6J5jGBaCZpfSUlnit5vMnMk8qVZnNReAW3PEeV92vz9q6E6_sAg",
+            "type": "usher"
+        }
+    ],
+    "at": "5570587993",
+    "current_hash": "9c37Dxl4VtrTIepIMhSe+xrzhTiulBIFr959K7kS6YM="
+}
+```
+
+---
+
+```json
+{
+    "previous_hash": "9c37Dxl4VtrTIepIMhSe+xrzhTiulBIFr959K7kS6YM=",
+    "protocol": "v1",
+    "scope": "",
+    "nonce": "XDNQEOx3s-r8p-uILfeUWCuYIjlVhvFY2-zIbR8PI1c",
     "record_type": "key:grant",
     "data": {
-        "schema": "key.grant/1",
-        "name": "Trust Architect Keymaster",
-        "key": "ZU8xeXdzRURFQl9VSGNncXhUbV9sUVg1QXdUeUZKTlJCd0sxUTRLMzZLMA"
+        "name": "Core Trust Keymaster",
+        "key": "eO1ywsEDEB_UHcgqxTm_lQX5AwTyFJNRBwK1Q4K36K0",
+        "roles": ["root"]
     },
     "signatures": [
         {
             "fingerprint": "Y_dGA-DOtN1kqpZQx1WytR-qmYbcdkWla5cIaK8WDU4",
             "type": "owner",
-            "signature": "ufXF-pbWgDrpeh89_T7m_iahJnNS4t5zZ9NW1EElRRM4vG7xp2FQMyHnTizHojAz54HdEOzIBkfnnmCGFsxIDg"
+            "signature": "nJesAAN1QrRFhac74Gn3Z9tu525h3Uk9w-79TILZP7vRUITiwEwj1qzY_RuQLCW72icgNIgPzDvDPZRCcsKuBA"
         },
         {
-            "fingerprint": "Y_dGA-DOtN1kqpZQx1WytR-qmYbcdkWla5cIaK8WDU4",
-            "signature": "N71EeryJMIksg8kD103HyTCjvwE7GVa4KVvchTKvE3O5A1g4hyPgNIca7SYjmVyViar4SQ84zvHSu6FQoBZiBQ",
+            "fingerprint": "Bn3bHf5FxeTo2DPJtrmT_SXAKL03CFt-eZgSDwLSYTs",
+            "signature": "jGbKRxWJj0z4trEvTqOMuf8xWrWOfp5XJ0sqccS0lKgEd9BkP8hDXKX2PAXeAL3O_OyCr_JoNt7TcGMFN1c9Bw",
             "type": "usher"
         }
     ],
-    "at": "104",
-    "current_hash": "GGgX8p4uQ+irxf0BEr0eJZFsFFU9R7zoij7rD7N3eMk="
+    "at": "5575611872",
+    "current_hash": "1r/x5ysS1HtMcIk6NGw4CC10n62n+BWCghtIgnQ2MRA="
 }
 ```
 
 ---
-
-```json
-{
-    "previous_hash": "GGgX8p4uQ+irxf0BEr0eJZFsFFU9R7zoij7rD7N3eMk=",
-    "protocol": "v1",
-    "scope": "",
-    "nonce": "U3BL-HrZJjY36pz9UE4uvcBCasB6w42NjqzVNcwXrGg",
-    "record_type": "scope:create",
-    "data": {
-        "schema": "scope.create/1",
-        "scope": "self",
-        "description": "Scope for sovereign identities",
-        "ushers": [
-            {
-                "ipAddress": "34.71.60.51",
-                "port": 1984
-            },
-            {
-                "ipAddress": "34.71.60.51",
-                "port": 3000
-            },
-            {
-                "ipAddress": "34.71.60.51",
-                "port": 3001
-            },
-            {
-                "ipAddress": "34.71.60.51",
-                "port": 3002
-            },
-            {
-                "ipAddress": "34.71.60.51",
-                "port": 3003
-            }
-        ],
-        "keys": {
-            "fingerprint": "eO1ywsEDEB_UHcgqxTm_lQX5AwTyFJNRBwK1Q4K36K0",
-            "roles": ["authority", "quorum"]
-        },
-        "created_at": "GT[0.000000116]",
-        "created_by": "Trust Architect Core"
-    },
-    "signatures": [
-        {
-            "fingerprint": "eO1ywsEDEB_UHcgqxTm_lQX5AwTyFJNRBwK1Q4K36K0",
-            "type": "owner",
-            "signature": "KgYPuMnFEwaxa8FrDimn-3YBN8j9nJmMxf3IPSx8jSMtgn13GN2lKo5QVfjeTYhA-6XAatGPIOgkZ3pwZH5GCQ"
-        },
-        {
-            "fingerprint": "eO1ywsEDEB_UHcgqxTm_lQX5AwTyFJNRBwK1Q4K36K0",
-            "signature": "vv4Eo3YxSjIqMZOitcnJG8hKlU8YOF0eg8-5A0vOocrHf4lsHNn4Gc5vLahbJR5ucepeYfeOf3HKlusfksFvCA",
-            "type": "usher"
-        }
-    ],
-    "at": "127",
-    "current_hash": "zbYcU3jTICFsTfN87ZxaTvI9Wjohug4vN9eYMn9ySrA="
-}
-```
-
----
-
-```json
-{
-    "previous_hash": "zbYcU3jTICFsTfN87ZxaTvI9Wjohug4vN9eYMn9ySrA=",
-    "protocol": "v1",
-    "scope": "self",
-    "nonce": "FX6tsxNXqnE45Xsx5x3UuGD8slaORdqHoKkYDJqn5U4",
-    "record_type": "scope:genesis",
-    "data": {
-        "schema": "scope.genesis/1",
-        "keys": {
-            "fingerprint": "eO1ywsEDEB_UHcgqxTm_lQX5AwTyFJNRBwK1Q4K36K0",
-            "roles": ["authority", "quorum"]
-        }
-    },
-    "signatures": [
-        {
-            "fingerprint": "eO1ywsEDEB_UHcgqxTm_lQX5AwTyFJNRBwK1Q4K36K0",
-            "type": "owner",
-            "signature": "wXfCuahY0ZF-yb4jGnjr1abXnHML0i2t2RPb1r8kb6Y_ZpXm5_h1r4ggke2Y-pHeGjGbGoegWrWL1HAnPK_LAw"
-        },
-        {
-            "fingerprint": "eO1ywsEDEB_UHcgqxTm_lQX5AwTyFJNRBwK1Q4K36K0",
-            "signature": "CDOXl1Jjv_Wg2QIU5X2f8PJqp7ayFjkjLiewWVrwWuv2StMJl_MLUog4bOw_kVDRhzO0kl0EI_3ORVHP8qd_Aw",
-            "type": "usher"
-        }
-    ],
-    "at": "139",
-    "current_hash": "46i+rhJx2LLvN4spOfnKR5sbbe5kWrOGu6pYwZR6lX8="
-}
-```
-
----
-
-```json
-{
-    "previous_hash": "46i+rhJx2LLvN4spOfnKR5sbbe5kWrOGu6pYwZR6lX8=",
-    "protocol": "v1",
-    "scope": "self",
-    "nonce": "VxtcUJkctdzq-4Qy0kB8WK6VoG5zHdYQCflhjaANUVY",
-    "record_type": "policy:set",
-    "data": {
-        "schema": "policy.set/1",
-        "write": ["authority", "owner"],
-        "read": ["any"],
-        "mirror": ["any"],
-        "grant": ["authority", "owner"],
-        "revoke": ["authority", "owner"],
-        "allow_records": ["identity:*", "scope:*", "assert:*"],
-        "deny_records": ["all"],
-        "quorum": {
-            "write": 1,
-            "grant": 1,
-            "revoke": 2
-        }
-    },
-    "signatures": [
-        {
-            "fingerprint": "eO1ywsEDEB_UHcgqxTm_lQX5AwTyFJNRBwK1Q4K36K0",
-            "type": "owner",
-            "signature": "UucxvQprExu2Lz8KMwg2EnAjWdYpLXeE5sixnON9Yoe1_YjKTK2T9Oo6dHBL9AYREBepNqbqXRBzUdjUtVQ3CQ"
-        },
-        {
-            "fingerprint": "eO1ywsEDEB_UHcgqxTm_lQX5AwTyFJNRBwK1Q4K36K0",
-            "signature": "jK9ySJka4OoyjBs0vBx2ZeXES8Nj0pcn9sNC2lHu4eRKmwv-qCF_ZvAIG6ijO4p79yOVw7q_0M9xe8ibUr_8CQ",
-            "type": "usher"
-        }
-    ],
-    "at": "174",
-    "current_hash": "0vJVbJFPCM//lC3ta8kCJVAycRasX0ChYqVILKRZQaY="
-}
-```
-
----
-
-```json
-{
-    "previous_hash": "",
-    "protocol": "v1",
-    "scope": "self",
-    "nonce": "PT3-y2ZsBQvr768ZJOzZoZS0rnKToPaJd09VOuhlT4o",
-    "record_type": "scope:create",
-    "data": {
-        "schema": "scope.create/1",
-        "scope": "self.0000-0000-0000-0000",
-        "description": "Scope for SelfID 0000-0000-0000-0000",
-        "ushers": [
-            {
-                "ipAddress": "34.71.60.51",
-                "port": 1984
-            },
-            {
-                "ipAddress": "34.71.60.51",
-                "port": 3000
-            },
-            {
-                "ipAddress": "34.71.60.51",
-                "port": 3001
-            },
-            {
-                "ipAddress": "34.71.60.51",
-                "port": 3002
-            },
-            {
-                "ipAddress": "34.71.60.51",
-                "port": 3003
-            }
-        ],
-        "keys": [
-            {
-                "fingerprint": "eO1ywsEDEB_UHcgqxTm_lQX5AwTyFJNRBwK1Q4K36K0",
-                "roles": ["authority", "quorum"]
-            }
-        ],
-        "created_at": "GT[0.000000197]",
-        "created_by": "Veronica Hodo <0000-0000-0000-0000>"
-    },
-    "signatures": [
-        {
-            "fingerprint": "eO1ywsEDEB_UHcgqxTm_lQX5AwTyFJNRBwK1Q4K36K0",
-            "type": "owner",
-            "signature": "12DcnCT-6CBMc15aWg5HcgidbJ4cgXyp_zYXJL0KQvom093JJduZhYijLH6iS1UVwxHrBPN41SU0nbqzrelNCQ"
-        },
-        {
-            "fingerprint": "eO1ywsEDEB_UHcgqxTm_lQX5AwTyFJNRBwK1Q4K36K0",
-            "signature": "mRVYHRNALyPK_5ZqKuvZx5YhZOJxSLEsVDU4HO3yRga7TYj8KkDQ5HorTBokSxnb33CfESC8JpIEQaORiXjxCA",
-            "type": "usher"
-        }
-    ],
-    "at": "197",
-    "current_hash": "QikE6K6pEPZqVubDAuNK4Cv86M64u8dDRe61GDRB4y0="
-}
-```
-
----
-
-```json
-{
-    "previous_hash": "0vJVbJFPCM//lC3ta8kCJVAycRasX0ChYqVILKRZQaY=",
-    "protocol": "v1",
-    "scope": "self",
-    "nonce": "rNeJ6TXQe_iIpeZCDACKUdElvQSU2vkwJZiRrh6bMcg",
-    "record_type": "identity:claim",
-    "data": {
-        "schema": "identity.claim/1",
-        "name_given": "Veronica",
-        "name_family": "Hodo",
-        "name_display": "Veronica Hodo",
-        "at": "GT[0.000000220]"
-    },
-    "signatures": [
-        {
-            "fingerprint": "eO1ywsEDEB_UHcgqxTm_lQX5AwTyFJNRBwK1Q4K36K0",
-            "type": "owner",
-            "signature": "qlD7eLaCaXAcDMFed6dmFnSjc-1UgEm8ZqHKXxSsFeleDz9ieoeAJ-B6h_ZHVViDJndvlxtiHkw47MpOiyBaDw"
-        },
-        {
-            "fingerprint": "eO1ywsEDEB_UHcgqxTm_lQX5AwTyFJNRBwK1Q4K36K0",
-            "signature": "wAXBnPnx9OOx1ZiEkTzIs9vn3jRRr3og4X_eQtSt72-8zT0Bzx1O0rI_p_izn57m0Ygm5Yv0u-nMsOPrNxbkCg",
-            "type": "usher"
-        }
-    ],
-    "at": "220",
-    "current_hash": "d5qIezpK9jhLAh61z9hDze0B3IsdewX3bYoYwNrR5jc="
-}
-```

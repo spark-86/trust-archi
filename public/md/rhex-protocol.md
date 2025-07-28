@@ -10,7 +10,7 @@ The `R⬢://` (Rhex) protocol defines a URI scheme for referencing records, scop
 R⬢://     →  The root of all scope-based addressing
 ```
 
-This protocol serves as a replacement for traditional web schemes like http://, signaling that the URI points to cryptographically signed, ledger-based content. Since Unicode characters like ⬢ are not currently permitted in URI schemes under RFC 3986, rhex:// is the valid and standards-compliant substitute for now.
+This protocol serves as a replacement for traditional web schemes like http\://, signaling that the URI points to cryptographically signed, ledger-based content. Since Unicode characters like ⬢ are not currently permitted in URI schemes under RFC 3986, `rhex://` is the valid and standards-compliant substitute for now.
 
 ---
 
@@ -19,19 +19,20 @@ This protocol serves as a replacement for traditional web schemes like http://, 
 The general form of a Rhex URI is:
 
 ```
-R⬢://[scope]/[record_hash_or_alias]
+rhex://[scope]/[record_hash_or_alias]?[query_params]
 ```
 
 -   `scope` — A root→leaf dot-separated hierarchy (e.g. `self.0000-0000-0000-0000`)
 -   `record_hash_or_alias` — A base64 hash of the R⬢ record, or a known alias like `readme`, `genesis`, etc.
+-   `query_params` — Optional filters (e.g. `record_type=motor:define`)
 
 ### Examples
 
 ```
-R⬢:///genesis                  → Genesis record
-R⬢:///veronica                → Root alias for a SelfID
-R⬢://self.0000.../readme  → Identity profile
-R⬢://emotor.motors.co/ab29... → Specific motor record
+rhex:///genesis
+rhex:///veronica
+rhex://self.0000.../readme
+rhex://emotor.motors.co/ab29...?record_type=motor:spec
 ```
 
 ---
@@ -44,7 +45,7 @@ Scopes are **root-to-leaf**, with each dot representing a delegation:
 root.branch.leaf → e.g. org.department.employee
 ```
 
-This reverses the traditional DNS-style convention. The root (`R⬢:///`) owns all scope issuance.
+This reverses the traditional DNS-style convention. The root (`rhex:///`) owns all scope issuance.
 
 ---
 
@@ -53,39 +54,46 @@ This reverses the traditional DNS-style convention. The root (`R⬢:///`) owns a
 To resolve a Rhex URI:
 
 1. Parse the `scope`
-2. Query the local or remote ledger mirror for matching `current_hash` or `alias`
-3. Validate:
+2. Determine the correct `usher` or `mirror` responsible for the scope
+3. Sign and submit a request using a valid key
+4. Validate response:
 
-    - Record hash matches
+    - Record hash matches (if specified)
     - Signatures are valid
-    - Scope authority exists
+    - Read policy is satisfied
 
----
-
-## 🧪 Special Aliases
-
-| Alias     | Meaning                       |
-| --------- | ----------------------------- |
-| `genesis` | The very first R⬢ record      |
-| `readme`  | Scope description and summary |
-| `latest`  | Most recent record in scope   |
-| `tip`     | Synonym for `latest`          |
+> 🔑 **All resolution requests must be signed.** No anonymous reads.
 
 ---
 
 ## 🔐 Secure Transport Layer
 
-While `R⬢://` is a logical URI scheme, implementations may:
+While `rhex://` is a logical URI scheme, resolution requires cryptographic authentication.
 
--   Use `usher` or `mirror` HTTP/gRPC servers
--   Translate `R⬢://...` to REST/gRPC routes or local cache
--   Redirect via browser extension or native resolver
+### Implementation Options:
+
+-   Native Rhex Browser (with key support)
+-   Usher-backed web apps (requires local keypair)
+-   Browser extensions (intercept and sign `rhex://` URIs)
 
 Example:
 
 ```
-R⬢://self.0000.../readme → https://web.trust.archi/self.0000.../readme
+rhex://self.0000.../readme → [signed request] → https://web.trust.archi/self.0000.../readme
 ```
+
+> 🚫 Proxying `rhex://` via generic HTTP without user keys **violates trust guarantees**.
+
+---
+
+## 🧪 Special Aliases
+
+| Alias     | Meaning                               |
+| --------- | ------------------------------------- |
+| `genesis` | The very first R⬢ record in the scope |
+| `readme`  | Scope description and summary         |
+| `latest`  | Most recent record in scope           |
+| `tip`     | Synonym for `latest`                  |
 
 ---
 
@@ -93,7 +101,7 @@ R⬢://self.0000.../readme → https://web.trust.archi/self.0000.../readme
 
 -   R⬢ records are immutable
 -   Aliases (like `readme`) are mutable, pointing to a `current_hash`
--   Servers can redirect, but must NEVER alter ledger content
+-   Redirects may be used by clients, but **must not** alter or obfuscate the ledger’s source of truth
 
 ---
 
@@ -101,10 +109,10 @@ R⬢://self.0000.../readme → https://web.trust.archi/self.0000.../readme
 
 The Rhex protocol is:
 
--   Self-resolving
--   Compatible with NFC payloads, QR codes, and hyperlinks
--   Useful for URI handlers, web extensions, and embedded firmware
+-   Cryptographically addressable
+-   Compatible with QR codes, NFC, and identity chips
+-   Designed for native apps, firmware, and human-readable referencing
 
 ---
 
-> R⬢:// is more than a link. It's a coordinate in cryptographic truth.
+> `rhex://` is not just a link. It's a signed, verifiable **coordinate in the ledger of reality**.

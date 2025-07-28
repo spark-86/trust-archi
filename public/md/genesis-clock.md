@@ -6,7 +6,7 @@
 
 ## ⏱️ 1. Purpose
 
-Legacy timekeeping (UTC, Unix epoch, ISO 8601) fails to provide deterministic, verifiable, and gravity-agnostic timestamps. The Genesis Clock solves this by:
+Legacy timekeeping (UTC, Unix epoch, ISO 8601) fails to provide deterministic and cryptographically verifiable timestamps. The Genesis Clock solves this by:
 
 -   Using **sidereal rotation**, not solar time, as its base unit
 -   Eliminating time zones, leap seconds, and cultural offsets

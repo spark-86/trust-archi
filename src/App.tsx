@@ -3,6 +3,7 @@ import PageContainer from "./pages/PageContainer";
 import PageGT from "./pages/gt/PageGT";
 import Header from "./widgets/Header";
 import Footer from "./widgets/Footer";
+import PageAppend from "./pages/append/PageAppend";
 
 function App() {
     const createRoute = (path: string, pageName: string) => {
@@ -37,6 +38,12 @@ function App() {
                     {createRoute("/tc-faq", "TCFAQ")}
                     {createRoute("/glossary", "Glossary")}
                     {createRoute("/rhex-protocol", "RhexProtocol")}
+                    {createRoute("/genesis", "Genesis")}
+                    {createRoute("/syllabus", "Syllabus")}
+                    {createRoute("/goodbye-zero-trust", "GoodbyeZeroTrust")}
+                    {createRoute("/thinking-in-rhex", "ThinkingInRhex")}
+                    {createRoute("/importance-of-selfid", "ImportanceOfSelfID")}
+                    {createRoute("/oops", "Oops")}
                     <Route
                         path="/gt"
                         element={
@@ -47,6 +54,7 @@ function App() {
                             </>
                         }
                     />
+                    <Route path="/append" element={<PageAppend />} />
                     <Route
                         path="*"
                         element={<PageContainer pageName="Home" />}

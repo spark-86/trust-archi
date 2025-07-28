@@ -36,6 +36,14 @@ const Header = () => {
                             >
                                 Genesis Time
                             </MuiLink>
+                            <MuiLink
+                                href="/append"
+                                color="inherit"
+                                underline="none"
+                                sx={{ mx: 1 }}
+                            >
+                                Append
+                            </MuiLink>
                         </Typography>
                     </Box>
                 </Toolbar>

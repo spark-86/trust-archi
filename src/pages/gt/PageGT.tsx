@@ -54,7 +54,12 @@ const PageGT = () => {
     const [now, setNow] = useState(Date.now());
 
     useEffect(() => {
-        const interval = setInterval(() => setNow(Date.now()), 100);
+        const interval = setInterval(() => {
+            const newNow = Date.now();
+            setNow(newNow);
+            const gtString = formatGtHuman(getFloatGT(newNow));
+            document.title = `${gtString} - GT Clock`;
+        }, 100);
         return () => clearInterval(interval);
     }, []);
 

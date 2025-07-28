@@ -25,9 +25,12 @@ This is **Trust Architecture** — a cryptographically verifiable system for **t
 -   [Genesis Clock](./genesis-clock) — how Genesis Time works, and how to compute it
 -   [R⬢ (Rhex) Format](./rhex-format) — the canonical record format used across all systems
 -   [Scope and Truth](./scope-and-truth) — how nested authority works
+-   [Thinking in R⬢](./thinking-in-rhex) — how to think like a Rhex engineer
 
 ### 🔐 Identity + Signing
 
+-   [Goodbye Zero Trust](./goodbye-zero-trust) - How the ledger brings the end to the zero trust model
+-   [Importance of SelfID](./importance-of-selfid) — why SelfID is the future of identity
 -   [SelfID](./selfid) — sovereign identity on the ledger
 -   [Hodo Trust](./hodo-trust) — the ethical foundation of the system
 -   [Manifesto](./manifesto) — why this was created, and who it's for
@@ -35,7 +38,7 @@ This is **Trust Architecture** — a cryptographically verifiable system for **t
 ### 📦 Live Proof
 
 -   [Sample Records](./sample-records) — signed and linked ledger records
--   [genesis.md](./genesis.md) — the first record (`R⬢:///genesis`)
+-   [Genesis](./genesis) — the first record (`R⬢:///genesis`)
 -   [Time Crystal](./ledger-as-time-crystal) — the system as a cryptographic memory of the world
 
 ### ❓ Questions & Language
@@ -53,6 +56,14 @@ This is **Trust Architecture** — a cryptographically verifiable system for **t
 -   See [R⬢ Format](./rhex-format) for the record schema
 -   Validate records using the sample data in [Sample Records](./sample-records)
 -   Use [Genesis Clock](./genesis-clock) to convert to/from GT
+
+---
+
+## 🏫 Students Start Here
+
+-   [Syllabus](./syllabus)
+-   [Temporal Cryptophysics](./temporal-cryptophysics)
+-   [Genesis Clock](./genesis-clock)
 
 ---
 
