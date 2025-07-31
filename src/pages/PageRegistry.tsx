@@ -75,4 +75,12 @@ export const pages = [
         name: "Oops",
         file: "/md/oops.md",
     },
+    {
+        name: "SchemaIndex",
+        file: "/md/schema/schema.md",
+    },
+    {
+        name: "SchemaScopeCreate",
+        file: "/md/schema/scope-create.md",
+    },
 ];

@@ -44,6 +44,8 @@ function App() {
                     {createRoute("/thinking-in-rhex", "ThinkingInRhex")}
                     {createRoute("/importance-of-selfid", "ImportanceOfSelfID")}
                     {createRoute("/oops", "Oops")}
+                    {createRoute("/schema", "SchemaIndex")}
+                    {createRoute("/schema/scope-create", "SchemaScopeCreate")}
                     <Route
                         path="/gt"
                         element={

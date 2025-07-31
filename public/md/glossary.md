@@ -25,6 +25,7 @@ A reference list for key concepts, terminology, and notation used throughout the
 -   **Quorum** → A policy-defined number of required signatures for a record to be accepted.
 -   **Nonce** → A unique, random value included in each record to prevent replay attacks.
 -   **Protocol** → The version of the ledger’s specification a record adheres to.
+-   **Schema** → A formal definition of a record's structure and required fields, such as `scope.create/1`.
 
 ---
 

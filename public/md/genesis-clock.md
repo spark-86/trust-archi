@@ -65,13 +65,14 @@ GT[0.00.00@000.000] ← genesis epoch
 
 Genesis Clock is **monotonic** and **forward-only** — time cannot go backward.
 
-Each record in the ledger includes a canonical timestamp in GT:
+Each record in the ledger includes a canonical timestamp in GT micromarks:
 
 ```json
-"at": "GT[712.482199]"
+"at": 712482199123
 ```
 
-All R⬢:// records are sorted canonically by their `GT` time.
+= GT[712.482199123] or GT[1.12.11@482.199]
+All R⬢:// records are sorted canonically by their `GT micromark` time.
 
 ---
 

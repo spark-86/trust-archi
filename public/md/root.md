@@ -56,6 +56,7 @@ This is **Trust Architecture** — a cryptographically verifiable system for **t
 -   See [R⬢ Format](./rhex-format) for the record schema
 -   Validate records using the sample data in [Sample Records](./sample-records)
 -   Use [Genesis Clock](./genesis-clock) to convert to/from GT
+-   [R⬢ Schema](./schema) - the formal definitions of record structures, like `scope.create/1`
 
 ---
 
