@@ -116,7 +116,6 @@ This allows multiple **civilizational clocks** to exist, yet be reconciled crypt
 
 GT time is:
 
--   **Gravity agnostic** (unaffected by relativity in computation)
 -   **Locally computable** (no centralized server required)
 -   **Digitally verifiable** (proofs include `at` in signature hash)
 -   **Timezone-free**, **calendar-free**, and **self-consistent**

@@ -33,24 +33,24 @@ const RhexViewer = ({ rhex }: RhexProps) => {
 
     return (
         <Box
-            onClick={() => setShowDetails(!showDetails)}
             sx={{
                 border: "1px solid black",
                 padding: "10px",
                 margin: "10px 0",
-                cursor: "pointer",
-                "&:hover": {
-                    backgroundColor: "lightgray",
-                },
             }}
         >
             {/* Top Summary Line */}
             <Box
+                onClick={() => setShowDetails(!showDetails)}
                 sx={{
                     display: "flex",
                     flexDirection: "row",
                     justifyContent: "space-between",
                     alignItems: "center",
+                    cursor: "pointer",
+                    "&:hover": {
+                        backgroundColor: "lightgray",
+                    },
                 }}
             >
                 <span>

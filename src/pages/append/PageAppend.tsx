@@ -28,11 +28,23 @@ const PageAppend = () => {
     const [outputString, setOutputString] = useState<string>("");
     const [rhex, setRhex] = useState<Rhex[]>([]);
     const [viewSigned, setViewSigned] = useState<boolean>(false);
+    const [publicKey, setPublicKey] = useState<string>("");
+    const [privateKey, setPrivateKey] = useState<string>("");
+    const [hidePrivate, setHidePrivate] = useState<boolean>(true);
+    const [protocol, setProtocol] = useState<string>("https:");
 
     const { sign, publicFromPrivate } = useKey();
 
     const convertStringToData = (dString: string) => {
         return JSON.parse(dString);
+    };
+
+    const generateKeys = async () => {
+        await sodium.ready;
+        const keyPair = sodium.crypto_sign_keypair();
+        setPublicKey(sodium.to_base64(keyPair.publicKey));
+        setPrivateKey(sodium.to_base64(keyPair.privateKey));
+        setKeyString(sodium.to_base64(keyPair.privateKey));
     };
 
     const handleSubmit = async (event: FormEvent) => {
@@ -70,7 +82,7 @@ const PageAppend = () => {
             return;
         }
         axios
-            .post(`http://${host}:${port}/append`, {
+            .post(`${protocol}//${host}:${port}/append`, {
                 ...sendingRec,
                 signatures: [
                     {
@@ -123,6 +135,51 @@ const PageAppend = () => {
                                         "request" and the desired scope, or
                                         blank for the root.
                                     </Typography>
+                                </Grid>
+                                <Grid size={12}>
+                                    <Typography variant="body1">
+                                        <strong>Public Key:</strong>
+                                    </Typography>
+                                    <Typography variant="body1">
+                                        {publicKey}
+                                    </Typography>
+                                    <Typography variant="body1">
+                                        <strong>Private Key:</strong>
+                                    </Typography>
+                                    <Typography variant="body1">
+                                        {!hidePrivate && <>{privateKey}</>}
+                                    </Typography>
+                                    <Button
+                                        variant="contained"
+                                        onClick={() =>
+                                            setHidePrivate(!hidePrivate)
+                                        }
+                                        sx={{ mr: 1 }}
+                                    >
+                                        {hidePrivate ? "Show" : "Hide"}
+                                    </Button>
+                                    <Button
+                                        variant="contained"
+                                        onClick={generateKeys}
+                                    >
+                                        Generate Keys
+                                    </Button>
+                                </Grid>
+                                <Grid size={12}>
+                                    <Autocomplete
+                                        options={["http:", "https:"].sort()}
+                                        getOptionLabel={(option) => option}
+                                        renderInput={(params) => (
+                                            <TextField
+                                                {...params}
+                                                label="Transport Protocol"
+                                                required
+                                            />
+                                        )}
+                                        onChange={(_, value) =>
+                                            setProtocol(value ?? "")
+                                        }
+                                    />
                                 </Grid>
                                 <Grid size={{ xs: 12, md: 8 }}>
                                     <TextField
